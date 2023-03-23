@@ -62,8 +62,35 @@ def check_timeline(timeline: list, position: int) -> list:
     Returns:
         list: _description_
     """
-    pass
-
+    if position <= len(timeline) - 1:
+        if pos == 0:
+            if new_item[0] < timeline[0][0]:
+                print(new_item[0])
+                print(timeline[0][0])
+                timeline.insert(0, new_item)
+                print(timeline)
+            else:
+                print("You lose")
+                playing_game = False
+        elif (pos > 0) and (pos < len(timeline) - 1):
+            print("Position is not the first in the list, and not the last")
+        elif pos == len(timeline) - 1:
+            if new_item[0] <= timeline[-1][0]:
+                timeline.append(new_item)
+                print(timeline)
+            else:
+                print("You lose")
+                playing_game = False
+    elif pos == len(timeline):
+        if new_item[0] >= timeline[-1][0]:
+            timeline.append(new_item)
+            print(timeline)
+        else:
+            print("You lose")
+            playing_game = False
+    else:
+        print(f"Error! The maximum index of the list is {len(list)-1}")
+    return 
 
 if __name__ == "__main__":
     # List of all events possible
@@ -71,7 +98,8 @@ if __name__ == "__main__":
     # List of drawn events
     timeline = []
     playing_game = True
-
+    while playing_game:
+        
     # while playing_game:
     #     new_event = drawEvent(list_of_events)
     #     # Check if this is the first event in the list
@@ -88,35 +116,15 @@ if __name__ == "__main__":
 # Cover index 0 med minst en ting til i lista //
 # Cover index over 0 og mindre enn siste index
 # Cover index siste spot i lista (-1 OR list.length -1)
-
-
+# for event in 
 list = [[1700, "Joe"], [1800, "Stein"]]
 
-new_item = [1900, "Jolo"]
-pos = 1
+new_item = [1700, "Jolo"]
+pos = 3
 
-if pos <= len(list) - 1:
-    if pos == 0:
-        if new_item[0] < list[0][0]:
-            print(new_item[0])
-            print(list[0][0])
-            list.insert(0, new_item)
-            print(list)
-        else:
-            print("You Lose")
-            playing_game = False
-    elif (pos > 0) and (pos < len(list) - 1):
-        print("Position is not the first in the list, and not the last")
-    elif pos == len(list) - 1:
-        print("Hey")
-        if new_item[0] > list[-1][0]:
-            print(list[-1])
-            list.append(new_item)
-        else:
-            print("You lose")
-            playing_game = False
 
-print(list)
+
+
 
 # if 0 == 0:
 #     print(len(list) - 1)
