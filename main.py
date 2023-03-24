@@ -72,7 +72,7 @@ def check_timeline(timeline: list, new_event: list, pos: int) -> None:
             timeline.clear()
     # The index is out of range
     else:
-        print(f"Error! The maximum index of the list is {len(timeline)-1}")
+        print(f"Error! The maximum index of the list is {len(timeline)}")
         timeline.clear()
 
 
@@ -140,8 +140,10 @@ def play_game() -> None:
             break
     if len(list_of_events) == 0 and len(timeline) != 0:
         print("You Win!!")
+        restart_game()
     else:
         print("You Lose!")
+        restart_game()
 
 
 def print_timeline(timeline: list) -> None:
@@ -153,6 +155,18 @@ def print_timeline(timeline: list) -> None:
     """
     for index, [time, event] in enumerate(timeline, start=0):
         print(index, event)
+
+
+def restart_game():
+    """Gives the user the option to start a new game.
+    It takes the answer Y or N as the input and runs the function
+    play_game if Y, and prints "Thank you for playing" if not.
+    """
+    restart = input("Restart Game? Y / N: ").strip().lower()
+    if restart == "y":
+        play_game()
+    else:
+        print("Thank you for playing")
 
 
 def user_placement() -> int:
