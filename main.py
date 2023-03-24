@@ -25,7 +25,7 @@ def check_timeline(timeline: list, new_event: list, pos: int) -> None:
     first_timeline_year = int(timeline[0][0])
 
     # If the inputted position is less than the length of the timeline
-    if pos <= len(timeline) - 1:
+    if pos < len(timeline):
         if pos == -1:
             if event_year > int(timeline[-1][0]):
                 timeline.append(new_event)
@@ -43,7 +43,7 @@ def check_timeline(timeline: list, new_event: list, pos: int) -> None:
             else:
                 timeline.clear()
         # The position is between 1 and last index of the list
-        elif (pos > 0) and (pos < len(timeline) - 1):
+        elif 0 < pos < len(timeline) - 1:
             timeline_left = int(timeline[pos - 1][0])
             if event_year in range(timeline_left + 1, int(timeline[pos][0])):
                 timeline.insert(pos, new_event)
@@ -53,9 +53,7 @@ def check_timeline(timeline: list, new_event: list, pos: int) -> None:
         elif pos == len(timeline) - 1:
             if pos == -1 and event_year < last_timeline_year:
                 timeline.clear()
-            elif event_year <= last_timeline_year and event_year >= int(
-                timeline[pos - 1][0]
-            ):
+            elif int(timeline[pos - 1][0]) <= event_year <= last_timeline_year:
                 timeline.insert(pos, new_event)
             else:
                 timeline.clear()
