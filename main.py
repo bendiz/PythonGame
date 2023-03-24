@@ -155,10 +155,13 @@ def print_timeline(timeline: list) -> None:
         print(index, event)
 
 
-def restart_game():
+def restart_game() -> None:
     """Gives the user the option to start a new game.
     It takes the answer Y or N as the input and runs the function
     play_game if Y, and prints "Thank you for playing" if not.
+
+    Returns:
+        None: This function only enters a new function or prints a message.
     """
     restart = input("Restart Game? Y / N: ").strip().lower()
     if restart == "y":
